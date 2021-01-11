@@ -1,0 +1,8 @@
+config_id: alex_id
+tap_config:
+    match_config:
+        any_match: true
+    output_config:
+        sinks:
+        - format: JSON_BODY_AS_BYTES
+          streaming_admin: {}
