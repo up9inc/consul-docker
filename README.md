@@ -1,6 +1,6 @@
 # Use UP9 & Consul to infer tests, mocks & observability from traffic
 
-This repo demonstrates how to create traffic-inferred tests, contracts, mocks and observability that represent real-life application behavior. 
+This repo demonstrates how to create traffic-inferred tests, contracts, mocks, and observability that represent real-life application behavior. 
 
 It includes:
 * A demo microservice application ([WeaveSock](https://microservices-demo.github.io/docs/load-test.html))
@@ -24,10 +24,10 @@ It includes:
 * Demo application is available at http://localhost:8000
 
 ## Architecture
-UP9 uses Envoy configuration to subscribe and unsubscribe to traffic events. UP9 observes traffic and infer tests, contracts, mocks and observability.
+UP9 uses Envoy configuration to subscribe and unsubscribe to traffic events. UP9 observes traffic and infers tests, contracts, mocks, and observability.
 
 A Consul Connect sidecar (with Envoy proxy) is attached to each service and is controlled by the Consul Server.  
-Envoy proxies enforce mTLS communication by only authorized clients to enforce secure communication in the service mesh.
+Envoy proxies enforce mTLS communication by authorized clients only to enforce secure communication in the service mesh.
 ![architecture](assets/architecture.png)
 
 ## Screenshots
