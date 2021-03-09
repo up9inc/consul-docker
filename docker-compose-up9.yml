@@ -1,0 +1,112 @@
+version: "2"
+services:
+  up9-collector:
+    image: gcr.io/up9-docker-hub/collector/develop:latest
+    restart: always
+    volumes:
+      - /Users/alongir/.config/up9/tap/ag.consul.030302/collector.json:/opt/up9/localConfig.json
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file: /Users/alongir/.config/up9/tests/ag.consul.030302/credentials.env
+    environment:
+      MODE: local
+      AGENT_NAME: local-alon@up9.com
+      TRAFFIC_DUMPER_EXTERNAL_HOSTNAME: traffic.stg.testr.io
+      UP9_ENV_SUFFIX: stg.testr.io
+    labels:
+      com.up9.tapped: false
+    networks:
+      &a1
+      - wsbridge
+    depends_on:
+      &a2
+      - consul
+      - front-end
+      - front-end_proxy
+      - edge
+      - edge_proxy
+      - catalogue
+      - catalogue_proxy
+      - catalogue-db
+      - carts
+      - carts_proxy
+      - carts-db
+      - orders
+      - orders_proxy
+      - orders-db
+      - shipping
+      - shipping_proxy
+      - queue-master
+      - rabbitmq
+      - payment
+      - payment_proxy
+      - user
+      - user_proxy
+      - user-db
+      - mockintosh
+      - mockintosh_proxy
+  up9-auth-helper:
+    image: gcr.io/up9-docker-hub/authentication-helper/develop:latest
+    restart: always
+    labels:
+      com.up9.tapped: false
+    networks: *a1
+    depends_on: *a2
+  up9-agent:
+    image: gcr.io/up9-docker-hub/trcc-agent/develop:latest
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      CONTAINER_ORCHESTRATION_SYSTEM: docker
+      UP9_ENV_SUFFIX: stg.testr.io
+      TEST_RUNNER_VERSION: develop:latest
+      AGENT_NAME: local-alon@up9.com
+      AGENT_ID: 936f6aed0fc55d2a171b67f6031a7188
+      AUTH_HELPER_SERVER: up9-auth-helper
+    env_file: /Users/alongir/.config/up9/tests/ag.consul.030302/credentials.env
+    labels:
+      com.up9.tapped: false
+    networks: *a1
+    depends_on: *a2
+  up9-agent_proxy:
+    image: gcr.io/up9-docker-hub/consul-envoy:v1.9.1-v1.16.2
+    environment:
+      CONSUL_HTTP_ADDR: 10.20.0.2:8500
+      CONSUL_GRPC_ADDR: 10.20.0.2:8502
+      SERVICE_CONFIG: /config/up9-agent.hcl
+      CENTRAL_CONFIG: /config/up9-agent_defaults.hcl
+    volumes:
+      - ./up9_config:/config
+    command:
+      - consul
+      - connect
+      - envoy
+      - -sidecar-for
+      - up9-agent_v1
+    network_mode: service:up9-agent
+    depends_on:
+      - consul
+      - front-end
+      - front-end_proxy
+      - edge
+      - edge_proxy
+      - catalogue
+      - catalogue_proxy
+      - catalogue-db
+      - carts
+      - carts_proxy
+      - carts-db
+      - orders
+      - orders_proxy
+      - orders-db
+      - shipping
+      - shipping_proxy
+      - queue-master
+      - rabbitmq
+      - payment
+      - payment_proxy
+      - user
+      - user_proxy
+      - user-db
+      - mockintosh
+      - mockintosh_proxy

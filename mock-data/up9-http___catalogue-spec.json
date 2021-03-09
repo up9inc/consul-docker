@@ -1,0 +1,326 @@
+{
+ "info": {
+  "title": "http://catalogue",
+  "version": "0.0"
+ },
+ "openapi": "3.0.2",
+ "paths": {
+  "/catalogue": {
+   "get": {
+    "operationId": "d8f82c71-7051-4b32-a827-e547c74d5a18",
+    "parameters": [
+     {
+      "in": "query",
+      "name": "size",
+      "required": false,
+      "schema": {
+       "enum": [
+        "5"
+       ],
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "example": [
+         {
+          "count": 1,
+          "description": "Socks fit for a Messiah. You too can experience walking in water with these special edition beauties. Each hole is lovingly proggled to leave smooth edges. The only sock approved by a higher power.",
+          "id": "03fef6ac-1896-4ce8-bd69-b798f85c6e0b",
+          "imageUrl": [
+           "/catalogue/images/holy_1.jpeg",
+           "/catalogue/images/holy_2.jpeg"
+          ],
+          "name": "Holy",
+          "price": 99.99,
+          "tag": [
+           "action",
+           "magic"
+          ]
+         },
+         {
+          "count": 438,
+          "description": "proident occaecat irure et excepteur labore minim nisi amet irure",
+          "id": "3395a43e-2d88-40de-b95f-e00e1502085b",
+          "imageUrl": [
+           "/catalogue/images/colourful_socks.jpg",
+           "/catalogue/images/colourful_socks.jpg"
+          ],
+          "name": "Colourful",
+          "price": 18,
+          "tag": [
+           "brown",
+           "blue"
+          ]
+         },
+         {
+          "count": 820,
+          "description": "Ready for action. Engineers: be ready to smash that next bug! Be ready, with these super-action-sport-masterpieces. This particular engineer was chased away from the office with a stick.",
+          "id": "510a0d7e-8e83-4193-b483-e27e09ddc34d",
+          "imageUrl": [
+           "/catalogue/images/puma_1.jpeg",
+           "/catalogue/images/puma_2.jpeg"
+          ],
+          "name": "SuperSport XL",
+          "price": 15,
+          "tag": [
+           "sport",
+           "formal",
+           "black"
+          ]
+         },
+         {
+          "count": 738,
+          "description": "A mature sock, crossed, with an air of nonchalance.",
+          "id": "808a2de1-1aaa-4c25-a9b9-6612e8f29a38",
+          "imageUrl": [
+           "/catalogue/images/cross_1.jpeg",
+           "/catalogue/images/cross_2.jpeg"
+          ],
+          "name": "Crossed",
+          "price": 17.32,
+          "tag": [
+           "blue",
+           "action",
+           "red",
+           "formal"
+          ]
+         },
+         {
+          "count": 808,
+          "description": "enim officia aliqua excepteur esse deserunt quis aliquip nostrud anim",
+          "id": "819e1fbf-8b7e-4f6d-811f-693534916a8b",
+          "imageUrl": [
+           "/catalogue/images/WAT.jpg",
+           "/catalogue/images/WAT2.jpg"
+          ],
+          "name": "Figueroa",
+          "price": 14,
+          "tag": [
+           "green",
+           "formal",
+           "blue"
+          ]
+         },
+         {
+          "count": 175,
+          "description": "consequat amet cupidatat minim laborum tempor elit ex consequat in",
+          "id": "837ab141-399e-4c1f-9abc-bace40296bac",
+          "imageUrl": [
+           "/catalogue/images/catsocks.jpg",
+           "/catalogue/images/catsocks2.jpg"
+          ],
+          "name": "Cat socks",
+          "price": 15,
+          "tag": [
+           "brown",
+           "formal",
+           "green"
+          ]
+         },
+         {
+          "count": 115,
+          "description": "For all those leg lovers out there. A perfect example of a swivel chair trained calf. Meticulously trained on a diet of sitting and Pina Coladas. Phwarr...",
+          "id": "a0a4f044-b040-410d-8ead-4de0446aec7e",
+          "imageUrl": [
+           "/catalogue/images/bit_of_leg_1.jpeg",
+           "/catalogue/images/bit_of_leg_2.jpeg"
+          ],
+          "name": "Nerd leg",
+          "price": 7.99,
+          "tag": [
+           "blue",
+           "skin"
+          ]
+         },
+         {
+          "count": 801,
+          "description": "We were not paid to sell this sock. It's just a bit geeky.",
+          "id": "d3588630-ad8e-49df-bbd7-3167f7efb246",
+          "imageUrl": [
+           "/catalogue/images/youtube_1.jpeg",
+           "/catalogue/images/youtube_2.jpeg"
+          ],
+          "name": "YouTube.sock",
+          "price": 10.99,
+          "tag": [
+           "formal",
+           "geek"
+          ]
+         },
+         {
+          "count": 127,
+          "description": "Keep it simple.",
+          "id": "zzz4f044-b040-410d-8ead-4de0446aec7e",
+          "imageUrl": [
+           "/catalogue/images/classic.jpg",
+           "/catalogue/images/classic2.jpg"
+          ],
+          "name": "Classic",
+          "price": 12,
+          "tag": [
+           "brown",
+           "green"
+          ]
+         }
+        ],
+        "schema": {
+         "items": {
+          "properties": {
+           "count": {
+            "type": "integer"
+           },
+           "description": {
+            "type": "string"
+           },
+           "id": {
+            "type": "string"
+           },
+           "imageUrl": {
+            "items": {
+             "type": "string"
+            },
+            "type": "array"
+           },
+           "name": {
+            "type": "string"
+           },
+           "price": {
+            "type": "number"
+           },
+           "tag": {
+            "items": {
+             "type": "string"
+            },
+            "type": "array"
+           }
+          },
+          "required": [
+           "count",
+           "description",
+           "id",
+           "imageUrl",
+           "name",
+           "price",
+           "tag"
+          ],
+          "type": "object"
+         },
+         "type": "array"
+        }
+       }
+      },
+      "description": "OK"
+     }
+    },
+    "summary": "Seen 65 requests",
+    "tags": [
+     "catalogue"
+    ]
+   },
+   "parameters": []
+  },
+  "/catalogue/{id}": {
+   "get": {
+    "operationId": "825d4ece-427c-48e4-afc6-dd19335b00cc",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "example": {
+         "count": 808,
+         "description": "enim officia aliqua excepteur esse deserunt quis aliquip nostrud anim",
+         "id": "819e1fbf-8b7e-4f6d-811f-693534916a8b",
+         "imageUrl": [
+          "/catalogue/images/WAT.jpg",
+          "/catalogue/images/WAT2.jpg"
+         ],
+         "name": "Figueroa",
+         "price": 14,
+         "tag": [
+          "formal",
+          "green",
+          "blue"
+         ]
+        },
+        "schema": {
+         "properties": {
+          "count": {
+           "type": "integer"
+          },
+          "description": {
+           "type": "string"
+          },
+          "id": {
+           "type": "string"
+          },
+          "imageUrl": {
+           "items": {
+            "type": "string"
+           },
+           "type": "array"
+          },
+          "name": {
+           "type": "string"
+          },
+          "price": {
+           "type": "number"
+          },
+          "tag": {
+           "items": {
+            "type": "string"
+           },
+           "type": "array"
+          }
+         },
+         "required": [
+          "count",
+          "description",
+          "id",
+          "imageUrl",
+          "name",
+          "price",
+          "tag"
+         ],
+         "type": "object"
+        }
+       }
+      },
+      "description": "OK"
+     }
+    },
+    "summary": "Seen 53 requests",
+    "tags": [
+     "catalogue"
+    ]
+   },
+   "parameters": [
+    {
+     "in": "path",
+     "name": "id",
+     "required": true,
+     "schema": {
+      "enum": [
+       "808a2de1-1aaa-4c25-a9b9-6612e8f29a38",
+       "a0a4f044-b040-410d-8ead-4de0446aec7e",
+       "03fef6ac-1896-4ce8-bd69-b798f85c6e0b",
+       "819e1fbf-8b7e-4f6d-811f-693534916a8b",
+       "510a0d7e-8e83-4193-b483-e27e09ddc34d"
+      ],
+      "type": "string"
+     },
+     "style": "simple"
+    }
+   ]
+  }
+ },
+ "tags": [
+  {
+   "name": "catalogue"
+  }
+ ]
+}

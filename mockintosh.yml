@@ -1,0 +1,206 @@
+# This is a Mockintosh configuration file.
+# Mockintosh provides a microservices friendly, small footprint HTTP mock service.
+# A standard laptop can run dozens of Mockintosh instances, or you can run all instances in a single Docker container.
+#
+# Install Mockintosh:                 pip3 install mockintosh
+# Run locally:                        mockintosh <this-file>
+# Run with Docker:                    docker run -it -p 8000-8005:8000-8005 -v `pwd`:/tmp testrio/mockintosh /tmp/<this-file>
+# More information can be found here: https://github.com/up9inc/mockintosh
+
+---
+management:
+  port: 8000
+services:
+- name: http://carts
+  port: 8001
+  ssl: false
+  managementRoot: __admin
+  oas: '@mock-data/up9-http___carts-spec.json'
+  endpoints:
+  - path: /carts/{{customerId}}
+    response:
+      status: 202
+    method: delete
+  - path: /carts/{{customerId}}/items
+    response:
+      status: 201
+      headers:
+        Content-Type: application/json
+      body: |-
+        {
+         "id": "603d5ed367e0e20007a7e678",
+         "itemId": "{{request.body}}",
+         "quantity": 1,
+         "unitPrice": {{random.float 7.99 99.99 2}}
+        }
+    method: post
+  - path: /carts/{{customerId}}/merge
+    response:
+      status: 202
+  - path: /carts/{{customerId}}/items
+    response:
+      headers:
+        Content-Type: application/json
+      body: '[]'
+- name: http://catalogue
+  hostname: catalogue
+  port: 8002
+  ssl: false
+  managementRoot: __admin
+  oas: '@mock-data/up9-http___catalogue-spec.json'
+  endpoints:
+  - path: /catalogue
+    response:
+      headers:
+        Content-Type: application/json
+      body: '@mock-data/resp_10.json'
+  - path: /catalogue/{{id}}
+    response:
+      headers:
+        Content-Type: application/json
+      body: '@mock-data/resp_11.json'
+- name: http://front-end
+  port: 8003
+  ssl: false
+  managementRoot: __admin
+  oas: '@mock-data/up9-http___front-end-spec.json'
+  endpoints:
+  - path: /
+    response:
+      headers:
+        Content-Type: text/html
+      body: '@mock-data/resp_1.html'
+      useTemplating: false
+  - path: /basket.html
+    response:
+      headers:
+        Content-Type: text/html
+      body: '@mock-data/resp_2.html'
+      useTemplating: false
+  - path: /cart
+    response:
+      status: 202
+    method: delete
+  - path: /cart
+    response:
+      status: 201
+    method: post
+  - path: /catalogue
+    response:
+      headers:
+        Content-Type: application/json
+      body: '@mock-data/resp_5.json'
+  - path: /category.html
+    response:
+      headers:
+        Content-Type: text/html
+      body: '@mock-data/resp_6.html'
+      useTemplating: false
+  - path: /detail.html
+    response:
+      headers:
+        Content-Type: text/html
+      body: '@mock-data/resp_7.html'
+      useTemplating: false
+  - path: /login
+    response:
+      headers:
+        Content-Type: text/html
+      body: Cookie is set
+      useTemplating: false
+  - path: /orders
+    response:
+      status: 201
+      headers:
+        Content-Type: application/json
+      body: '@mock-data/resp_9.json'
+    method: post
+  - path: /customers/{{customerId}}
+    response:
+      headers:
+        Content-Type: application/json
+      body: '@mock-data/resp_22.json'
+      useTemplating: false
+  - path: /footer.html
+    response:
+      headers:
+        Content-Type: text/html
+      body: '@mock-data/resp_23.html'
+      useTemplating: false
+  - path: /{{param}}
+    response:
+      headers:
+        Content-Type: text/html
+      body: '@mock-data/resp_25.html'
+      useTemplating: false
+  - path: /topbar.html
+    response:
+      headers:
+        Content-Type: text/html
+      body: |-
+        <!-- *** TOPBAR ***
+        _________________________________________________________ -->
+        <div id="top">
+            <div class="container">
+                <div class="co
+      useTemplating: false
+- name: http://orders
+  port: 8004
+  ssl: false
+  managementRoot: __admin
+  oas: '@mock-data/up9-http___orders-spec.json'
+  endpoints:
+  - path: /orders
+    response:
+      status: 201
+      headers:
+        Content-Type: application/json
+      body: '@mock-data/resp_17.json'
+    method: post
+- name: http://payment
+  port: 8005
+  ssl: false
+  managementRoot: __admin
+  oas: '@mock-data/up9-http___payment-spec.json'
+  endpoints:
+  - path: /paymentAuth
+    response:
+      headers:
+        Content-Type: application/json
+      body: '{"authorised":true,"message":"Payment authorised"}'
+      useTemplating: false
+    method: post
+- name: http://shipping
+  port: 8006
+  ssl: false
+  managementRoot: __admin
+  oas: '@mock-data/up9-http___shipping-spec.json'
+  endpoints:
+  - path: /shipping
+    response:
+      status: 201
+      headers:
+        Content-Type: application/json
+      body: |-
+        {
+         "id": "{{request.body}}",
+         "name": "{{request.body}}"
+        }
+    method: post
+- name: http://user
+  port: 8007
+  ssl: false
+  managementRoot: __admin
+  oas: '@mock-data/up9-http___user-spec.json'
+  endpoints:
+  - path: /customers/{{customerId}}
+    response:
+      headers:
+        Content-Type: application/json
+      body: '@mock-data/resp_12.json'
+  - path: /login
+    response:
+      headers:
+        Content-Type: application/json
+      body: '@mock-data/resp_13.json'
+      useTemplating: false
