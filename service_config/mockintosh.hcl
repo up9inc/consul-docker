@@ -2,7 +2,7 @@ service {
   name = "mockintosh"
   id = "mockintosh_v1"
   address = "10.20.0.17"
-  port = 8007
+  port = 8002
   
   connect { 
     sidecar_service {

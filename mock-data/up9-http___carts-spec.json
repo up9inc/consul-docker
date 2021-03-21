@@ -5,81 +5,17 @@
  },
  "openapi": "3.0.2",
  "paths": {
-  "/carts/{customerId}": {
-   "delete": {
-    "operationId": "1ced68fb-265d-4bed-bada-76c1d5bb44dc",
-    "parameters": [],
-    "responses": {
-     "202": {
-      "description": "Accepted"
-     }
-    },
-    "summary": "Seen 48 requests",
-    "tags": [
-     "carts"
-    ]
-   },
-   "parameters": [
-    {
-     "in": "path",
-     "name": "customerId",
-     "required": true,
-     "schema": {
-      "enum": [
-       "57a98d98e4b00679b4a830b2",
-       "undefined"
-      ],
-      "type": "string"
-     },
-     "style": "simple"
-    }
-   ]
-  },
-  "/carts/{customerId}/items": {
+  "/carts/{id}/items": {
    "get": {
-    "operationId": "7ce8d1a8-1211-4048-8d07-8cbd75a0d4aa",
-    "parameters": [
-     {
-      "in": "header",
-      "name": "accept",
-      "required": false,
-      "schema": {
-       "enum": [
-        "application/json"
-       ],
-       "type": "string"
-      }
-     }
-    ],
+    "operationId": "421cfa44-ac03-44f5-ad0a-082e475dce58",
+    "parameters": [],
     "responses": {
      "200": {
       "content": {
        "application/json": {
         "example": [],
         "schema": {
-         "items": {
-          "properties": {
-           "id": {
-            "type": "string"
-           },
-           "itemId": {
-            "type": "string"
-           },
-           "quantity": {
-            "type": "integer"
-           },
-           "unitPrice": {
-            "type": "number"
-           }
-          },
-          "required": [
-           "id",
-           "itemId",
-           "quantity",
-           "unitPrice"
-          ],
-          "type": "object"
-         },
+         "items": {},
          "type": "array"
         }
        }
@@ -87,7 +23,7 @@
       "description": "OK"
      }
     },
-    "summary": "Seen 48 requests",
+    "summary": "Seen 64 requests",
     "tags": [
      "carts"
     ]
@@ -95,102 +31,25 @@
    "parameters": [
     {
      "in": "path",
-     "name": "customerId",
+     "name": "id",
      "required": true,
      "schema": {
       "enum": [
+       "HMAPu3M-9ulbWj0vnWS_xcm347xaehHE",
        "57a98d98e4b00679b4a830b2",
-       "undefined"
+       "7w4TGI0pnIxn5TEFoHX6O2spPdXa3dut",
+       "undefined",
+       "rk1gtwTdnRiovVkJoeOD723SPlnOSem3"
       ],
       "type": "string"
      },
      "style": "simple"
     }
-   ],
-   "post": {
-    "operationId": "c2cd808e-19bd-4994-b342-46f44cb19a5c",
-    "parameters": [
-     {
-      "in": "header",
-      "name": "accept",
-      "required": false,
-      "schema": {
-       "enum": [
-        "application/json"
-       ],
-       "type": "string"
-      }
-     }
-    ],
-    "requestBody": {
-     "content": {
-      "application/json": {
-       "schema": {
-        "properties": {
-         "itemId": {
-          "type": "string"
-         },
-         "unitPrice": {
-          "type": "number"
-         }
-        },
-        "required": [
-         "itemId",
-         "unitPrice"
-        ],
-        "type": "object"
-       }
-      }
-     },
-     "required": true
-    },
-    "responses": {
-     "201": {
-      "content": {
-       "application/json": {
-        "example": {
-         "id": "603d5ed367e0e20007a7e678",
-         "itemId": "808a2de1-1aaa-4c25-a9b9-6612e8f29a38",
-         "quantity": 1,
-         "unitPrice": 17.32
-        },
-        "schema": {
-         "properties": {
-          "id": {
-           "type": "string"
-          },
-          "itemId": {
-           "type": "string"
-          },
-          "quantity": {
-           "type": "integer"
-          },
-          "unitPrice": {
-           "type": "number"
-          }
-         },
-         "required": [
-          "id",
-          "itemId",
-          "quantity",
-          "unitPrice"
-         ],
-         "type": "object"
-        }
-       }
-      },
-      "description": "Created"
-     }
-    },
-    "summary": "Seen 47 requests",
-    "tags": [
-     "carts"
-    ]
-   }
+   ]
   },
-  "/carts/{customerId}/merge": {
+  "/carts/{id}/merge": {
    "get": {
-    "operationId": "3fd5babd-6605-4007-9e06-0818a8da94ba",
+    "operationId": "1e4488b0-4947-4552-9819-f6c221ece5df",
     "parameters": [
      {
       "in": "query",
@@ -198,11 +57,11 @@
       "required": true,
       "schema": {
        "enum": [
-        "F61oSLsnbNw9y7F3rir7-hGSiKq_BQQW",
-        "pRyLFWUv8io3YDel07V0smiSmfk7Pv-U",
-        "7pW_bM5mJ3PQcM_pGJd-SYDrG2dQ7QPw",
-        "K31WV6M0zQwiS3YUYH6QYpIHtua_U2AP",
-        "-s4KGvoEW2uKaiFGu9pLlhmH1KF0Bqll"
+        "7w4TGI0pnIxn5TEFoHX6O2spPdXa3dut",
+        "SZyuF1X2bVarlsKXS7xcI86OluhYrdoz",
+        "4QJEZM9OrGi0DE7QUqwC1q12rL-Mxrjc",
+        "4nsBKJasnSljpIbctOyQQ3i4Y7ptp7xj",
+        "r5gw222fvZLc0vZD0rlFeQu0Fv9kak-C"
        ],
        "type": "string"
       }
@@ -213,7 +72,7 @@
       "description": "Accepted"
      }
     },
-    "summary": "Seen 49 requests",
+    "summary": "Seen 11 requests",
     "tags": [
      "carts"
     ]
@@ -221,12 +80,15 @@
    "parameters": [
     {
      "in": "path",
-     "name": "customerId",
+     "name": "id",
      "required": true,
      "schema": {
       "enum": [
+       "HMAPu3M-9ulbWj0vnWS_xcm347xaehHE",
        "57a98d98e4b00679b4a830b2",
-       "undefined"
+       "7w4TGI0pnIxn5TEFoHX6O2spPdXa3dut",
+       "undefined",
+       "rk1gtwTdnRiovVkJoeOD723SPlnOSem3"
       ],
       "type": "string"
      },

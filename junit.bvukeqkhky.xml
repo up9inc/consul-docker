@@ -1,0 +1,40 @@
+<testsuite name="up9.tests.ag.consul.030302.all" tests="1" errors="0" failures="1" time="0.235">
+  <testcase classname="up9.tests.ag.consul.030302.all.Tests_collection" name="test_37_get_catalogue" time="0.037">
+    <failure message="AssertionError: XPath query &quot;//*[contains(text(),'Holy')]&quot; didn't match response content: [{&quot;id&quot;:&quot;03fef6ac-1896-4ce8-bd69-b798f85c6e0b&quot;,&quot;name&quot;:&quot;Hxly&quot;,&quot;des"><![CDATA[args = (<filtered_tests.Tests_collection testMethod=test_37_get_catalogue>,)
+kwargs = {}
+
+    def wrapper(*args, **kwargs):
+        metadata.update({
+            'module': orig_fn.__module__, 'functionName': orig_fn.__qualname__
+        })
+        _do_clear_session(metadata)
+    
+        try:
+>           return orig_fn(*args, **kwargs)
+
+up9lib.py:257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+filtered_tests.py:15: in test_37_get_catalogue
+    resp.assert_xpath("//*[contains(text(),'Holy')]", parser_type='html', validate=True)
+/venv/lib/python3.7/site-packages/apiritif/http.py:420: in _impl
+    return assertion_method(self, *method_args, **method_kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = GET http://localhost:44967/catalogue?page=1&size=6&tags= => 200 OK
+xpath_query = "//*[contains(text(),'Holy')]", parser_type = 'html'
+validate = True
+msg = 'XPath query "//*[contains(text(),\'Holy\')]" didn\'t match response content: [{"id":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","name":"Hxly","des'
+
+    @recorder.assertion_decorator
+    def assert_xpath(self, xpath_query, parser_type='html', validate=False, msg=None):
+        parser = etree.HTMLParser() if parser_type == 'html' else etree.XMLParser(dtd_validation=validate)
+        tree = etree.parse(BytesIO(self.content), parser)
+        matches = tree.xpath(xpath_query)
+        if not matches:
+            msg = msg or "XPath query %r didn't match response content: %s" % (xpath_query, self.text[:BODY_LIMIT])
+>           raise AssertionError(msg)
+E           AssertionError: XPath query "//*[contains(text(),'Holy')]" didn't match response content: [{"id":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","name":"Hxly","des
+
+/venv/lib/python3.7/site-packages/apiritif/http.py:762: AssertionError]]></failure>
+  </testcase>
+</testsuite>

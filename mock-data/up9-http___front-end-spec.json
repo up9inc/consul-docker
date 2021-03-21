@@ -7,7 +7,7 @@
  "paths": {
   "/": {
    "get": {
-    "operationId": "66f176f3-376b-4e2d-820a-83ed94a2e01c",
+    "operationId": "99e0a6bd-2fe5-458f-a01d-c0274891b244",
     "parameters": [],
     "responses": {
      "200": {
@@ -19,90 +19,78 @@
       "description": "OK"
      }
     },
-    "summary": "Seen 41 requests"
+    "summary": "Seen 2 requests"
    },
    "parameters": []
   },
-  "/basket.html": {
+  "/cart": {
    "get": {
-    "operationId": "8dde9e27-5316-4faf-8087-06c8e9b34b44",
-    "parameters": [],
+    "operationId": "b7cea4be-2e74-47cf-b99c-4428f34ff826",
+    "parameters": [
+     {
+      "in": "header",
+      "name": "x-requested-with",
+      "required": false,
+      "schema": {
+       "enum": [
+        "XMLHttpRequest"
+       ],
+       "type": "string"
+      }
+     }
+    ],
     "responses": {
      "200": {
       "content": {
-       "text/html": {
-        "example": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n\n    <meta charset=\"utf-8\">\n    <meta name=\"robots\" content=\"all,follow\">\n    <meta name=\"googlebot\" content=\"index,follow,snippet,archive\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"description\" content=\"WeaveSocks Demo App\">\n    <meta name=\"author\" content=\"Ondrej Svestka | ondrejsvestka.cz\">\n    <meta name=\"keywords\" content=\"\">\n\n    <title>\n        WeaveSocks\n    </title>\n\n    <meta name=\"keywords\" content=\"\">\n\n    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'\n          rel='stylesheet' type='text/css'>\n\n    <!-- styles -->\n    <link href=\"css/font-awesome.css\" rel=\"stylesheet\">\n    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n    <link href=\"css/animate.min.css\" rel=\"stylesheet\">\n    <link href=\"css/owl.carousel.css\" rel=\"stylesheet\">\n    <link href=\"css/owl.theme.css\" rel=\"stylesheet\">\n\n    <!-- theme stylesheet -->\n    <link href=\"css/style.blue.css\" rel=\"stylesheet\" id=\"theme-stylesheet\">\n\n    <!-- your stylesheet with modifications -->\n    <link href=\"css/custom.css\" rel=\"stylesheet\">\n\n    <script src=\"js/respond.min.js\"></script>\n\n    <link rel=\"shortcut icon\" href=\"favicon.png\">\n\n\n</head>\n\n<body>\n<div id=\"topbar\"></div>\n<div id=\"navbar\"></div>\n\n\n<div id=\"all\">\n\n    <div id=\"content\">\n        <div class=\"container\">\n\n            <div id=\"user-message\"> </div>\n\n            <div class=\"col-md-12\">\n                <ul class=\"breadcrumb\">\n                    <li><a href=\"index.html\">Home</a>\n                    </li>\n                    <li>Shopping cart</li>\n                </ul>\n            </div>\n\n            <div class=\"col-md-9\" id=\"basket\">\n\n                <div class=\"box\">\n\n                    <form action=\"customer-orders.html\">\n                        <h1>Shopping cart</h1>\n                        <p class=\"text-muted\" id=\"numItemsInCart\"></p>\n                        <div class=\"table-responsive\">\n                            <table class=\"table\">\n                                <thead>\n                                <tr>\n                                    <th colspan=\"2\">Product</th>\n                                    <th>Quantity</th>\n                                    <th>Unit price</th>\n                                    <th>Discount</th>\n                                    <th colspan=\"2\">Total</th>\n                                </tr>\n                                </thead>\n                                <tbody id=\"cart-list\">\n                                </tbody>\n                                <tfoot>\n                                <tr>\n                                    <th colspan=\"5\">Total</th>\n                                    <th colspan=\"2\" id=\"cartTotal\"></th>\n                                </tr>\n                                </tfoot>\n                            </table>\n\n                        </div>\n                        <!-- /.table-responsive -->\n\n\n                        <div class=\"box-footer\">\n                            <div class=\"pull-left\">\n                                <a href=\"category.html\" class=\"btn btn-default\"><i\n                                        class=\"fa fa-chevron-left\"></i> Continue\n                                    shopping</a>\n                            </div>\n                            <div class=\"pull-right\">\n                                <a class=\"btn btn-default\" onclick=\"updateCart()\"><i\n                                        class=\"fa fa-refresh\"></i> Update basket\n                                </a>\n                                <button id=\"orderButton\" type=\"submit\" class=\"btn btn-primary\" disabled>\n                                    Proceed to checkout <i class=\"fa fa-chevron-right\"></i>\n                                </button>\n                            </div>\n                        </div>\n\n                    </form>\n\n                </div>\n                <!-- /.box -->\n\n                <div class=\"row same-height-row\">\n\n                    <div class=\"col-md-6\">\n                        <div class=\"box\">\n                            <div class=\"box-header\">\n                                <h4 style=\"display: inline;\">Shipping Address</h4>\n                                <p id=\"add_shipping\" style=\"display: inline; float: right;\">\n                                    <a data-toggle=\"modal\" data-target=\"#address-modal\" href=\"#add\">Add</a>\n                                </p>\n                            </div>\n                            <p id=\"address\"></p>\n                            <div class=\"modal fade\" id=\"address-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"address\" aria-hidden=\"true\">\n                                <div class=\"modal-dialog modal-sm\">\n                                    <div class=\"modal-content\">\n                                        <div class=\"modal-header\">\n                                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\"\n                                                    aria-hidden=\"true\">&times;</button>\n                                            <h4 class=\"modal-title\" id=\"Login\">Address</h4>\n                                        </div>\n                                        <div class=\"modal-body\">\n                                            <form action=\"\" id=\"form-address\">\n                                                <div class=\"form-group\">\n                                                    <label for=\"house-number\">House Number</label>\n                                                    <input type=\"text\" class=\"form-control\" name=\"house-number\" id=\"form-number\" placeholder=\"Number\">\n                                                </div>\n                                                <div class=\"form-group\">\n                                                    <label for=\"street\">Street Name</label>\n                                                    <input type=\"text\" class=\"form-control\" name=\"street\" id=\"form-street\" placeholder=\"Street\">\n                                                </div>\n                                                <div class=\"form-group\">\n                                                    <label for=\"city\">City</label>\n                                                    <input type=\"text\" class=\"form-control\" name=\"city\" id=\"form-city\" placeholder=\"City\">\n                                                </div>\n                                                <div class=\"form-group\">\n                                                    <label for=\"post-code\">Post Code</label>\n                                                    <input type=\"text\" class=\"form-control\" name=\"post-code\" id=\"form-post-code\" placeholder=\"Post Code\">\n                                                </div>\n                                                <div class=\"form-group\">\n                                                    <label for=\"country\">Country</label>\n                                                    <input type=\"text\" class=\"form-control\" name=\"country\" id=\"form-country\" placeholder=\"Country\">\n                                                </div>\n                                                    <p class=\"text-center\">\n                                                        <button class=\"btn btn-primary\" href=\"#\" onclick=\"return address()\"><i\n                                                                class=\"fa fa-refresh\"></i> Update\n                                                        </button>\n                                                    </p>\n                                            </form>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <div class=\"box\">\n                            <div class=\"box-header\">\n                                <h4 style=\"display: inline;\">Payment</h4>\n                                <p id=\"add_payment\" style=\"display: inline; float: right;\">\n                                    <a data-toggle=\"modal\" data-target=\"#card-modal\" href=\"#add\">Add</a>\n                                </p>\n                            </div>\n                            <p id=\"number\"></p>\n                            <div class=\"modal fade\" id=\"card-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"card\" aria-hidden=\"true\">\n                                <div class=\"modal-dialog modal-sm\">\n                                    <div class=\"modal-content\">\n                                        <div class=\"modal-header\">\n                                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\"\n                                                    aria-hidden=\"true\">&times;</button>\n                                            <h4 class=\"modal-title\" id=\"credit-card\">Credit Card</h4>\n                                        </div>\n                                        <div class=\"modal-body\">\n                                            <form action=\"\" id=\"form-card\">\n                                                <div class=\"form-group\">\n                                                    <label for=\"card-number\">Card Number</label>\n                                                    <input type=\"text\" class=\"form-control\" name=\"card-number\" id=\"form-card-number\" placeholder=\"Card Number\">\n                                                </div>\n                                                <div class=\"form-group\">\n                                                    <label for=\"expires\">Expires</label>\n                                                    <input type=\"text\" class=\"form-control\" name=\"expires\" id=\"form-expires\" placeholder=\"MM/YY\">\n                                                </div>\n                                                <div class=\"form-group\">\n                                                    <label for=\"ccv\">CCV</label>\n                                                    <input type=\"text\" class=\"form-control\" name=\"ccv\" id=\"form-ccv\" placeholder=\"CCV\">\n                                                </div>\n                                            </form>\n                                            <p class=\"text-right\">\n                                                <button class=\"btn btn-primary\" href=\"#\" onclick=\"return card()\"><i\n                                                        class=\"fa fa-refresh\"></i> Update\n                                                </button>\n                                            </p>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"row same-height-row\" id=\"youMayAlsoLike\">\n                    <div class=\"col-md-3 col-sm-6\">\n                        <div class=\"box same-height\">\n                            <h3>You may also like these products</h3>\n                        </div>\n                    </div>\n\n                </div>\n\n\n            </div>\n            <!-- /.col-md-9 -->\n\n            <div class=\"col-md-3\">\n                <div class=\"box\" id=\"order-summary\">\n                    <div class=\"box-header\">\n                        <h3>Order summary</h3>\n                    </div>\n                    <p class=\"text-muted\">Shipping and additional costs are\n                        calculated based on the values you have entered.</p>\n\n                    <div class=\"table-responsive\">\n                        <table class=\"table\">\n                            <tbody>\n                            <tr>\n                                <td>Order subtotal</td>\n                                <th id=\"orderSubtotal\">$0.00</th>\n                            </tr>\n                            <tr>\n                                <td>Shipping and handling</td>\n                                <th id=\"orderShipping\">$0.00</th>\n                            </tr>\n                            <tr>\n                                <td>Tax</td>\n                                <th id=\"orderTax\">$0.00</th>\n                            </tr>\n                            <tr class=\"total\">\n                                <td>Total</td>\n                                <th id=\"orderGrandTotal\">$0.00</th>\n                            </tr>\n                            </tbody>\n                        </table>\n                    </div>\n\n                </div>\n\n\n                <div class=\"box\">\n                    <div class=\"box-header\">\n                        <h4>Coupon code</h4>\n                    </div>\n                    <p class=\"text-muted\">If you have a coupon code, please\n                        enter it in the box below.</p>\n                    <form>\n                        <div class=\"input-group\">\n\n                            <input type=\"text\" class=\"form-control\">\n\n                                <span class=\"input-group-btn\">\n\n\t\t\t\t\t<button class=\"btn btn-primary\" type=\"button\"><i\n                            class=\"fa fa-gift\"></i></button>\n\n\t\t\t\t    </span>\n                        </div>\n                        <!-- /input-group -->\n                    </form>\n                </div>\n\n            </div>\n            <!-- /.col-md-3 -->\n\n        </div>\n        <!-- /.container -->\n    </div>\n    <!-- /#content -->\n    <div id=\"footer\"></div>\n\n</div>\n<!-- /#all -->\n\n\n<!-- *** SCRIPTS TO INCLUDE ***\n_________________________________________________________ -->\n<script src=\"js/jquery-1.11.0.min.js\"></script>\n<script src=\"js/bootstrap.min.js\"></script>\n<script src=\"js/jquery.cookie.js\"></script>\n<script src=\"js/waypoints.min.js\"></script>\n<script src=\"js/modernizr.js\"></script>\n<script src=\"js/bootstrap-hover-dropdown.js\"></script>\n<script src=\"js/owl.carousel.min.js\"></script>\n<script src=\"js/front.js\"></script>\n<script src=\"js/jquery.query-object.js\"></script>\n<script src=\"js/client.js\"></script>\n<script>\n\n    $(document).ready(function () {\n        $.ajaxSetup({\n            contentType: \"application/json; charset=utf-8\"\n        });\n\n        console.log(\"Loading components for basket.html\");\n        $(\"#topbar\").load(\"topbar.html\");\n        $(\"#navbar\").load(\"navbar.html\");\n        $(\"#footer\").load(\"footer.html\");\n    })\n</script>\n<script>\n    function deleteFromCart(id) {\n        console.log(\"Sending request to delete: \" + id);\n        $.ajax({\n            url: \"cart/\" + id,\n            type: \"DELETE\",\n            success: function (data, textStatus, jqXHR) {\n                console.log('Item deleted: ' + id + ', ' + textStatus);\n                location.reload();\n            },\n            error: function (jqXHR, textStatus, errorThrown) {\n                console.error('Could not delete item: ' + id + ', due to: ' + textStatus + ' | ' + errorThrown);\n            }\n        });\n    }\n\n    // function updateCart()\n\t// for each item row in cart table call updateToCart (client.js - updateToCart(itemId, quantity, callback))\n\tfunction updateCart() {\n\t\tconsole.log(\"Updating Cart\");\n\t\tvar cartsize = document.getElementById(\"cart-list\").rows.length;\n\t\tconsole.log(\"cart-list size: \" + cartsize);\n\n\t\tvar idx = 0;\n\t\tnext = function(){\n\t\t\tif (idx< cartsize) {\n\t\t\t\tvar id = document.getElementById(\"cart-list\").rows[idx].cells[2].id;\n\t\t\t\tvar quantity = document.getElementById(\"cart-list\").rows[idx].cells[2].getElementsByTagName('input')[0].value;\n\t\t\t\tidx++;\n\t\t\t\tupdateToCart(id, quantity, next);\n\t\t\t}\n\t\t\telse {\n\t\t\t\tlocation.reload();\n\t\t\t}\n\t\t}\n\t\tnext();\n\t}\n\n    $(document).ready(function () {\n        $.ajaxSetup({\n            contentType: \"application/json; charset=utf-8\"\n        });\n\n        $.getJSON('/cart', {}, function (data) {\n            if (data != null) {\n                var cartTotal = 0;\n                var numItemsInCart = 0;\n                var shipping = 4.99;\n                var orderPlaced = false;\n                $.each(data, function (index, element) {\n                    if (element != null && element.itemId != null && element.itemId != \"null\") {\n                        $.getJSON('/catalogue/' + element.itemId, function (data) {\n                            console.log(JSON.stringify(data));\n                            $('#cart-list').append(' <tr class=\"item\">\\\n                                                <input class=\"id\" type=\"hidden\" value=\"' + data.id + '\">\\\n                                                <td>\\\n                                                    <a href=\"#\">\\\n                                                        <img src=\"' + data.imageUrl[0] + '\" alt=\"' + data.namex + '\">\\\n                                                    </a>\\\n                                                </td>\\\n                                                <td>\\\n                                                    <a href=\"#\">' + data.name + '</a>\\\n                                                </td>\\\n                                                <td id=\"' + element.itemId + '\">\\\n                                                    <input type=\"number\" min=\"1\" value=\"' + element.quantity + '\" class=\"form-control\">\\\n                                                </td>\\\n                                                <td>$' + data.price.toFixed(2) + '</td>\\\n                                                <td>$0.00</td>\\\n                                                <td>$' + (element.quantity * data.price).toFixed(2) + '</td>\\\n                                                <td>\\\n                                                    <a href=\"#\" onclick=\"deleteFromCart(\\'' + data.id + '\\')\"><i class=\"fa fa-trash-o\"></i></a>\\\n                                                </td>\\\n                                            </tr>');\n                            cartTotal = cartTotal + element.quantity * data.price;\n                            console.log(\"Cur total: \" + cartTotal);\n                            numItemsInCart = numItemsInCart + element.quantity;\n                        }).always(function () {\n                            console.log(\"Final counts: $\" + cartTotal + \", with \" + numItemsInCart + \" items.\");\n                            $('#orderButton').prop('disabled', false);\n                            if ($('p#address').text() === 'No address saved for user.' || $('p#number').text() === 'No credit card saved for user.') {\n                                $('#orderButton').click(function(event) {\n                                    event.stopPropagation();\n                                    event.preventDefault();\n                                    $(\"#user-message\").html('<div class=\"alert alert-danger alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button> Could not place order. Missing shipping or payment information.</div>');\n                                    return false;\n                                });\n                            } else {\n                                $('#orderButton').click(function(event) {\n                                    if (orderPlaced == false) {\n                                      orderPlaced = true;\n                                      return order();\n\t\t\t\t    }\n                                });\n                            }\n                            $('#numItemsInCart').text('You currently have ' + numItemsInCart + ' item(s) in your cart.');\n                            $('#cartTotal').text('$' + cartTotal.toFixed(2));\n                            $('#orderSubtotal').text('$' + cartTotal.toFixed(2));\n                            $('#orderShipping').text('$' + shipping.toFixed(2));\n                            $('#orderGrandTotal').text('$' + (cartTotal + shipping).toFixed(2));\n                        });\n                    }\n                });\n\n            }\n        });\n\n        $.getJSON('/card', function(data) {\n            if (data.status_code !== 500) {\n                $(\"p#number\").text(\"Card ending in \" + data.number).css(\"color\", \"black\");\n                $(\"#add_payment\").hide();\n            } else {\n                $(\"p#number\").text(\"No credit card saved for user.\").css(\"color\", \"red\");\n                $(\"#add_payment\").show();\n            }\n        });\n\n        $.getJSON('/address', function(data) {\n            if (data.status_code !== 500) {\n                var text = data.number + \" \";\n                text += data.street\n                text += \"</br>\";\n                text += data.city;\n                text += \"</br>\";\n                text += data.postcode;\n                text += \"</br>\";\n                text += data.country;\n                $(\"p#address\").html(text).css(\"color\", \"black\");\n                $(\"#add_shipping\").hide();\n            } else {\n                $(\"p#address\").text(\"No address saved for user.\").css(\"color\", \"red\");\n                $(\"#add_shipping\").show();\n            }\n        });\n\n        $.getJSON('/catalogue', {size: 3}, function (data) {\n            if (data != null) {\n                $.each(data, function (index, element) {\n                    $('#youMayAlsoLike').append(\n                            '<div class=\"col-md-3 col-sm-6\">\\\n                                <div class=\"product same-height\">\\\n                                    <div class=\"flip-container\">\\\n                                        <div class=\"flipper\">\\\n                                            <div class=\"front\">\\\n                                                <a href=\"detail.html?id=' + element.id + '\">\\\n                                                    <img src=\"' + element.imageUrl[0] + '\" alt=\"\" class=\"img-responsive\">\\\n                                                </a>\\\n                                            </div>\\\n                                            <div class=\"back\">\\\n                                                <a href=\"detail.html?id=' + element.id + '\">\\\n                                                    <img src=\"' + element.imageUrl[1] + '\" alt=\"\" class=\"img-responsive\">\\\n                                                </a>\\\n                                            </div>\\\n                                        </div>\\\n                                    </div>\\\n                                    <a href=\"detail.html\" class=\"invisible\">\\\n                                        <img src=\"' + element.imageUrl[0] + '\" alt=\"\" class=\"img-responsive\">\\\n                                    </a>\\\n                                    <div class=\"text\">\\\n                                        <h3><a href=\"detail.html?id=' + element.id + '\">' + element.name + '</a></h3>\\\n                                        <p class=\"price\">$' + element.price + '</p>\\\n                                    </div>\\\n                                </div>\\\n                            </div>'\n                    );\n                });\n            }\n        }).always(\n                $(window).trigger('resize')\n        );\n    });\n\n</script>\n\n</body>\n\n</html>\n"
+       "application/json": {
+        "example": [],
+        "schema": {
+         "items": {},
+         "type": "array"
+        }
        }
       },
       "description": "OK"
      }
     },
-    "summary": "Seen 38 requests"
+    "summary": "Seen 62 requests"
    },
    "parameters": []
   },
-  "/cart": {
-   "delete": {
-    "operationId": "df100735-9a96-4923-9623-2afd90206309",
-    "parameters": [],
-    "responses": {
-     "202": {
-      "description": "Accepted"
-     }
-    },
-    "summary": "Seen 39 requests",
-    "tags": [
-     "cart"
-    ]
-   },
-   "parameters": [],
-   "post": {
-    "operationId": "e8bfab7c-4cfb-488f-a775-7da1dd73f4a8",
-    "parameters": [],
-    "requestBody": {
-     "content": {
-      "application/json": {
-       "schema": {
-        "properties": {
-         "id": {
-          "type": "string"
-         },
-         "quantity": {
-          "type": "integer"
-         }
-        },
-        "required": [
-         "id",
-         "quantity"
-        ],
-        "type": "object"
-       }
-      }
-     },
-     "required": true
-    },
-    "responses": {
-     "201": {
-      "description": "Created"
-     }
-    },
-    "summary": "Seen 39 requests",
-    "tags": [
-     "cart"
-    ]
-   }
-  },
   "/catalogue": {
    "get": {
-    "operationId": "f766ca27-e564-40a6-a52f-2d66b3f218ce",
+    "operationId": "39ee8d30-c627-4b40-bd3c-3c8380145eef",
     "parameters": [
      {
       "in": "query",
-      "name": "size",
+      "name": "page",
       "required": false,
       "schema": {
        "enum": [
-        "5"
+        "1"
+       ],
+       "type": "string"
+      }
+     },
+     {
+      "in": "query",
+      "name": "size",
+      "required": true,
+      "schema": {
+       "enum": [
+        "5",
+        "6"
+       ],
+       "type": "string"
+      }
+     },
+     {
+      "in": "query",
+      "name": "tags",
+      "required": false,
+      "schema": {
+       "enum": [
+        ""
        ],
        "type": "string"
       }
@@ -202,67 +190,6 @@
            "formal",
            "blue"
           ]
-         },
-         {
-          "count": 175,
-          "description": "consequat amet cupidatat minim laborum tempor elit ex consequat in",
-          "id": "837ab141-399e-4c1f-9abc-bace40296bac",
-          "imageUrl": [
-           "/catalogue/images/catsocks.jpg",
-           "/catalogue/images/catsocks2.jpg"
-          ],
-          "name": "Cat socks",
-          "price": 15,
-          "tag": [
-           "brown",
-           "formal",
-           "green"
-          ]
-         },
-         {
-          "count": 115,
-          "description": "For all those leg lovers out there. A perfect example of a swivel chair trained calf. Meticulously trained on a diet of sitting and Pina Coladas. Phwarr...",
-          "id": "a0a4f044-b040-410d-8ead-4de0446aec7e",
-          "imageUrl": [
-           "/catalogue/images/bit_of_leg_1.jpeg",
-           "/catalogue/images/bit_of_leg_2.jpeg"
-          ],
-          "name": "Nerd leg",
-          "price": 7.99,
-          "tag": [
-           "blue",
-           "skin"
-          ]
-         },
-         {
-          "count": 801,
-          "description": "We were not paid to sell this sock. It's just a bit geeky.",
-          "id": "d3588630-ad8e-49df-bbd7-3167f7efb246",
-          "imageUrl": [
-           "/catalogue/images/youtube_1.jpeg",
-           "/catalogue/images/youtube_2.jpeg"
-          ],
-          "name": "YouTube.sock",
-          "price": 10.99,
-          "tag": [
-           "formal",
-           "geek"
-          ]
-         },
-         {
-          "count": 127,
-          "description": "Keep it simple.",
-          "id": "zzz4f044-b040-410d-8ead-4de0446aec7e",
-          "imageUrl": [
-           "/catalogue/images/classic.jpg",
-           "/catalogue/images/classic2.jpg"
-          ],
-          "name": "Classic",
-          "price": 12,
-          "tag": [
-           "brown",
-           "green"
-          ]
          }
         ],
         "schema": {
@@ -314,13 +241,76 @@
       "description": "OK"
      }
     },
-    "summary": "Seen 45 requests"
+    "summary": "Seen 62 requests",
+    "tags": [
+     "catalogue"
+    ]
+   },
+   "parameters": []
+  },
+  "/catalogue/size": {
+   "get": {
+    "operationId": "d7009241-c082-45ff-bac4-41b00ffb943c",
+    "parameters": [
+     {
+      "in": "query",
+      "name": "tags",
+      "required": true,
+      "schema": {
+       "enum": [
+        ""
+       ],
+       "type": "string"
+      }
+     },
+     {
+      "in": "header",
+      "name": "x-requested-with",
+      "required": false,
+      "schema": {
+       "enum": [
+        "XMLHttpRequest"
+       ],
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "example": {
+         "err": null,
+         "size": 9
+        },
+        "schema": {
+         "properties": {
+          "err": {},
+          "size": {
+           "type": "integer"
+          }
+         },
+         "required": [
+          "err",
+          "size"
+         ],
+         "type": "object"
+        }
+       }
+      },
+      "description": "OK"
+     }
+    },
+    "summary": "Seen 10 requests",
+    "tags": [
+     "catalogue"
+    ]
    },
    "parameters": []
   },
   "/category.html": {
    "get": {
-    "operationId": "ce5d109d-5c88-4b39-a0aa-67e28f9a6071",
+    "operationId": "e9109bed-d0a2-479d-8e45-9c74b61ef175",
     "parameters": [],
     "responses": {
      "200": {
@@ -332,13 +322,13 @@
       "description": "OK"
      }
     },
-    "summary": "Seen 39 requests"
+    "summary": "Seen 1 requests"
    },
    "parameters": []
   },
   "/customers/{customerId}": {
    "get": {
-    "operationId": "59db7d53-5733-4d53-89d9-2ffbe6afdcd9",
+    "operationId": "b3559f2f-7820-4754-aee1-0063862faef6",
     "parameters": [
      {
       "in": "header",
@@ -460,7 +450,7 @@
       "description": "OK"
      }
     },
-    "summary": "Seen 1 requests"
+    "summary": "Seen 30 requests"
    },
    "parameters": [
     {
@@ -469,7 +459,11 @@
      "required": true,
      "schema": {
       "enum": [
-       "1-l5gY4jRtHYU8WUyPdO_e0cR7HZHEDD"
+       "_hSG_jdZrjO-R3IXmX-D0e5eh8GmD_y9",
+       "7w4TGI0pnIxn5TEFoHX6O2spPdXa3dut",
+       "SZyuF1X2bVarlsKXS7xcI86OluhYrdoz",
+       "4QJEZM9OrGi0DE7QUqwC1q12rL-Mxrjc",
+       "4nsBKJasnSljpIbctOyQQ3i4Y7ptp7xj"
       ],
       "type": "string"
      },
@@ -477,43 +471,9 @@
     }
    ]
   },
-  "/detail.html": {
-   "get": {
-    "operationId": "e27f61a5-aeab-4767-96b6-4d587fa72fe6",
-    "parameters": [
-     {
-      "in": "query",
-      "name": "id",
-      "required": true,
-      "schema": {
-       "enum": [
-        "808a2de1-1aaa-4c25-a9b9-6612e8f29a38",
-        "a0a4f044-b040-410d-8ead-4de0446aec7e",
-        "03fef6ac-1896-4ce8-bd69-b798f85c6e0b",
-        "819e1fbf-8b7e-4f6d-811f-693534916a8b",
-        "510a0d7e-8e83-4193-b483-e27e09ddc34d"
-       ],
-       "type": "string"
-      }
-     }
-    ],
-    "responses": {
-     "200": {
-      "content": {
-       "text/html": {
-        "example": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n\n    <meta charset=\"utf-8\">\n    <meta name=\"robots\" content=\"all,follow\">\n    <meta name=\"googlebot\" content=\"index,follow,snippet,archive\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"description\" content=\"WeaveSocks Demo App\">\n    <meta name=\"author\" content=\"Ondrej Svestka | ondrejsvestka.cz\">\n    <meta name=\"keywords\" content=\"\">\n\n    <title>\n        WeaveSocks\n    </title>\n\n    <meta name=\"keywords\" content=\"\">\n\n    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'\n          rel='stylesheet' type='text/css'>\n\n    <!-- styles -->\n    <link href=\"css/font-awesome.css\" rel=\"stylesheet\">\n    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n    <link href=\"css/animate.min.css\" rel=\"stylesheet\">\n    <link href=\"css/owl.carousel.css\" rel=\"stylesheet\">\n    <link href=\"css/owl.theme.css\" rel=\"stylesheet\">\n\n    <!-- theme stylesheet -->\n    <link href=\"css/style.blue.css\" rel=\"stylesheet\" id=\"theme-stylesheet\">\n\n    <!-- your stylesheet with modifications -->\n    <link href=\"css/custom.css\" rel=\"stylesheet\">\n\n    <script src=\"js/respond.min.js\"></script>\n\n    <link rel=\"shortcut icon\" href=\"favicon.png\">\n\n\n</head>\n\n<body>\n\n<div id=\"topbar\"></div>\n<div id=\"navbar\"></div>\n\n<div id=\"all\">\n\n    <div id=\"content\">\n        <div class=\"container\">\n\n            <div class=\"col-md-12\">\n                <ul class=\"breadcrumb\">\n                    <li><a href=\"/\">Home</a>\n                    </li>\n                    <li><a href=\"category.html\">Catalogue</a>\n                    </li>\n                    <li id=\"breadcrumb\"></li>\n                </ul>\n\n            </div>\n\n            <div class=\"col-md-12\">\n\n                <div class=\"row\" id=\"productMain\">\n                    <div class=\"col-sm-6\">\n                        <div id=\"mainImage\">\n                            <img id=\"imageMain\" alt=\"\"\n                                 class=\"img-responsive\">\n                        </div>\n\n                        <div class=\"ribbon sale\">\n                            <div class=\"theribbon\">SALE</div>\n                            <div class=\"ribbon-background\"></div>\n                        </div>\n                        <!-- /.ribbon -->\n\n                        <div class=\"ribbon new\">\n                            <div class=\"theribbon\">NEW</div>\n                            <div class=\"ribbon-background\"></div>\n                        </div>\n                        <!-- /.ribbon -->\n\n                    </div>\n                    <div class=\"col-sm-6\">\n                        <div class=\"box\">\n                            <h1 id=\"title\" class=\"text-center\"></h1>\n                            <p class=\"goToDescription\"><a href=\"#productDetails\"\n                                                          class=\"scroll-to\">Scroll\n                                to product details, material & care and\n                                sizing</a>\n                            </p>\n                            <p id=\"price\" class=\"price\"></p>\n\n                            <p class=\"text-center buttons\">\n                                <a id=\"buttonCart\" class=\"btn btn-primary\"><i\n                                        class=\"fa fa-shopping-cart\"></i> Add to\n                                    cart</a>\n                                <a href=\"basket.html\" class=\"btn btn-default\"><i\n                                        class=\"fa fa-heart\"></i> Add to wishlist</a>\n                            </p>\n\n\n                        </div>\n\n                        <div class=\"row\" id=\"thumbs\">\n                        </div>\n                    </div>\n\n                </div>\n\n\n                <div class=\"box\" id=\"productDetails\">\n                    <p>\n                    <h4>Product details</h4>\n                    <p id=\"description\">White lace top, woven, has a round neck, short sleeves,\n                        has knitted lining attached</p>\n                    <h4>Material & care</h4>\n                    <ul>\n                        <li>Polyester</li>\n                        <li>Machine wash</li>\n                    </ul>\n                    <h4>Size & Fit</h4>\n                    <ul>\n                        <li>Regular fit</li>\n                    </ul>\n\n                    <blockquote>\n                        <p><em>Add more socks, you need more socks!</em>\n                        </p>\n                    </blockquote>\n\n                    <hr>\n                    <div class=\"social\">\n                        <h4>Show it to your friends</h4>\n                        <p>\n                            <a href=\"#\" class=\"external facebook\"\n                               data-animate-hover=\"pulse\"><i\n                                    class=\"fa fa-facebook\"></i></a>\n                            <a href=\"#\" class=\"external gplus\"\n                               data-animate-hover=\"pulse\"><i\n                                    class=\"fa fa-google-plus\"></i></a>\n                            <a href=\"#\" class=\"external twitter\"\n                               data-animate-hover=\"pulse\"><i\n                                    class=\"fa fa-twitter\"></i></a>\n                            <a href=\"#\" class=\"email\"\n                               data-animate-hover=\"pulse\"><i\n                                    class=\"fa fa-envelope\"></i></a>\n                        </p>\n                    </div>\n                </div>\n\n                <div class=\"row same-height-row\">\n                    <div class=\"col-md-3 col-sm-6\">\n                        <div class=\"box same-height\">\n                            <h3>You may also like these products</h3>\n                        </div>\n                    </div>\n                    <div id=\"products\"></div>\n                </div>\n\n            </div>\n            <!-- /.col-md-9 -->\n        </div>\n        <!-- /.container -->\n    </div>\n    <!-- /#content -->\n\n    <div id=\"footer\"></div>\n</div>\n<!-- /#all -->\n\n\n<!-- *** SCRIPTS TO INCLUDE ***\n_________________________________________________________ -->\n<script src=\"js/jquery-1.11.0.min.js\"></script>\n<script src=\"js/bootstrap.min.js\"></script>\n<script src=\"js/jquery.cookie.js\"></script>\n<script src=\"js/waypoints.min.js\"></script>\n<script src=\"js/modernizr.js\"></script>\n<script src=\"js/bootstrap-hover-dropdown.js\"></script>\n<script src=\"js/owl.carousel.min.js\"></script>\n<script src=\"js/front.js\"></script>\n<script src=\"js/jquery.query-object.js\"></script>\n<script src=\"js/client.js\"></script>\n<script>\n\n    $(document).ready(function () {\n        $.ajaxSetup({\n            contentType: \"application/json; charset=utf-8\"\n        });\n\n        console.log(\"Loading components for category.html\");\n        $(\"#topbar\").load(\"topbar.html\");\n        $(\"#navbar\").load(\"navbar.html\");\n        $(\"#footer\").load(\"footer.html\");\n\n        var id = $.query.get('id') ? $.query.get('id') : \"\";\n        if (id == null || id == \"\") {\n            document.location.href = \"/\";\n        }\n        $.getJSON('/catalogue/' + id, function (data) {\n            $(\"#title\").text(data.name);\n            $(\"#breadcrumb\").text(data.name);\n            $(\"#price\").text(\"$\" + data.price.toFixed(2));\n            $(\"#imageMain\").attr(\"src\", data.imageUrl[0]);\n            $(\"#buttonCart\").attr(\"onClick\", \"addToCart(\\'\" + data.id + \"\\')\");\n            var thumbHtml = \"\";\n            for (var i = 0; i < data.imageUrl.length; i++) {\n                thumbHtml = thumbHtml +\n                        '<div class=\"col-xs-4\">\\\n                            <a href=\"' + data.imageUrl[i] + '\" class=\"thumb\">\\\n                    <img src=\"' + data.imageUrl[i] + '\" alt=\"\" class=\"img-responsive\">\\\n                    </a>\\\n                </div>'\n            }\n            $(\"#thumbs\").append(thumbHtml);\n            $(\"#description\").text(data.description);\n\n            $.getJSON('/catalogue', {sort: \"id\", size: 3, tags: data.tag[0]}, function (data) {\n                if (data != null) {\n                    $.each(data, function (index, element) {\n                        $('#products').append('<div class=\"col-md-3 col-sm-4\">\\\n                            <div class=\"product same-height\">\\\n                                    <div class=\"flip-container\">\\\n                                        <div class=\"flipper\">\\\n                                            <div class=\"front\">\\\n                                                <a href=\"detail.html?id=' + element.id + '\">\\\n                                                    <img src=\"' + element.imageUrl[0] + '\" alt=\"\" class=\"img-responsive\">\\\n                                                </a>\\\n                                            </div>\\\n                                            <div class=\"back\">\\\n                                                <a href=\"detail.html?id=' + element.id + '\">\\\n                                                    <img src=\"' + element.imageUrl[1] + '\" alt=\"\" class=\"img-responsive\">\\\n                                                </a>\\\n                                            </div>\\\n                                        </div>\\\n                                    </div>\\\n                                    <a href=\"detail.html?id=' + element.id + '\" class=\"invisible\">\\\n                                        <img src=\"img/product1.jpg\" alt=\"\" class=\"img-responsive\">\\\n                                    </a>\\\n                                    <div class=\"text\">\\\n                                        <h3><a href=\"detail.html?id=' + element.id + '\">' + element.name + '</a></h3>\\\n                                        <p class=\"price\">$' + element.price + '</p>\\\n                                        <p class=\"buttons\">\\\n                                            <a href=\"detail.html?id=' + element.id + '\" class=\"btn btn-default\">View detail</a>\\\n                                            <a href=\"#\" onclick=\"addToCart(\\'' + element.id + '\\')\" class=\"btn btn-primary\"><i class=\"fa fa-shopping-cart\"></i>Add to cart</a>\\\n                                        </p>\\\n                                    </div>\\\n                                </div>\\\n                            </div>');\n                    });\n                }\n            });\n        });\n\n\n\n\n\n\n    });\n\n</script>\n\n</body>\n\n</html>\n"
-       }
-      },
-      "description": "OK"
-     }
-    },
-    "summary": "Seen 39 requests"
-   },
-   "parameters": []
-  },
   "/footer.html": {
    "get": {
-    "operationId": "a65afb3a-6421-4de9-99a6-b55c12f32be2",
+    "operationId": "37b2bff1-87be-4e26-b66c-a67e79f89e0a",
     "parameters": [
      {
       "in": "header",
@@ -537,13 +497,31 @@
       "description": "OK"
      }
     },
-    "summary": "Seen 1 requests"
+    "summary": "Seen 2 requests"
+   },
+   "parameters": []
+  },
+  "/index.html": {
+   "get": {
+    "operationId": "adfef857-3133-4173-bc0d-fbe2c1551946",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "content": {
+       "text/html": {
+        "example": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n\n    <meta charset=\"utf-8\">\n    <meta name=\"robots\" content=\"all,follow\">\n    <meta name=\"googlebot\" content=\"index,follow,snippet,archive\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"description\" content=\"WeaveSocks Demo App\">\n    <meta name=\"author\" content=\"Ondrej Svestka | ondrejsvestka.cz\">\n    <meta name=\"keywords\" content=\"\">\n\n    <title>\n        WeaveSocks\n    </title>\n\n    <meta name=\"keywords\" content=\"\">\n\n    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'\n          rel='stylesheet' type='text/css'>\n\n    <!-- styles -->\n    <link href=\"css/font-awesome.css\" rel=\"stylesheet\">\n    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n    <link href=\"css/animate.min.css\" rel=\"stylesheet\">\n    <link href=\"css/owl.carousel.css\" rel=\"stylesheet\">\n    <link href=\"css/owl.theme.css\" rel=\"stylesheet\">\n\n    <!-- theme stylesheet -->\n    <link href=\"css/style.blue.css\" rel=\"stylesheet\" id=\"theme-stylesheet\">\n\n    <!-- your stylesheet with modifications -->\n    <link href=\"css/custom.css\" rel=\"stylesheet\">\n\n    <script src=\"js/respond.min.js\"></script>\n\n    <link rel=\"shortcut icon\" href=\"favicon.png\">\n\n\n</head>\n\n<body>\n\n<div id=\"topbar\"></div>\n<div id=\"navbar\"></div>\n\n<div id=\"all\">\n\n    <div id=\"content\">\n\n        <div class=\"container\">\n            <div class=\"col-md-12\">\n                <div id=\"main-slider\">\n                    <div class=\"item\">\n                        <a href=\"detail.html?id=6d62d909-f957-430e-8689-b5129c0bb75e\">\n                            <img class=\"img-responsive\" src=\"img/weave1.jpg\" alt=\"\">\n                        </a>\n                    </div>\n                    <div class=\"item\">\n                        <a href=\"detail.html?id=6d62d909-f957-430e-8689-b5129c0bb75e\">\n                            <img class=\"img-responsive\" src=\"img/weave2.jpg\" alt=\"\">\n                        </a>\n                    </div>\n                    <div class=\"item\">\n                        <a href=\"detail.html?id=6d62d909-f957-430e-8689-b5129c0bb75e\">\n                            <img class=\"img-responsive\" src=\"img/weave3.jpg\" alt=\"\">\n                        </a>\n                    </div>\n                </div>\n                <!-- /#main-slider -->\n            </div>\n        </div>\n\n        <!-- *** ADVANTAGES HOMEPAGE ***\n_________________________________________________________ -->\n        <div id=\"advantages\">\n\n            <div class=\"container\">\n                <div class=\"same-height-row\">\n                    <div class=\"col-sm-4\">\n                        <div class=\"box same-height clickable\">\n                            <div class=\"icon\"><i class=\"fa fa-heart\"></i>\n                            </div>\n\n                            <h3><a href=\"#\">We love socks!</a></h3>\n                            <p>Fun fact: Socks were invented by woolly mammoths\n                                to keep warm. They died out because stupid\n                                humans had to cut their legs off to get their\n                                socks.</p>\n                        </div>\n                    </div>\n\n                    <div class=\"col-sm-4\">\n                        <div class=\"box same-height clickable\">\n                            <div class=\"icon\"><i class=\"fa fa-tags\"></i>\n                            </div>\n\n                            <h3><a href=\"#\">Best prices</a></h3>\n                            <p>We price check our socks with trained monkeys\n                                back at the office.</p>\n                        </div>\n                    </div>\n\n                    <div class=\"col-sm-4\">\n                        <div class=\"box same-height clickable\">\n                            <div class=\"icon\"><i class=\"fa fa-thumbs-up\"></i>\n                            </div>\n\n                            <h3><a href=\"#\">100% satisfaction guaranteed</a>\n                            </h3>\n                            <p>Free returns on most items. Hamsters are\n                                non-returnable once spoken to.</p>\n                        </div>\n                    </div>\n                </div>\n                <!-- /.row -->\n\n            </div>\n            <!-- /.container -->\n\n        </div>\n        <!-- /#advantages -->\n\n        <!-- *** ADVANTAGES END *** -->\n\n        <!-- *** HOT PRODUCT SLIDESHOW ***\n_________________________________________________________ -->\n        <div id=\"hot\">\n\n            <div class=\"box\">\n                <div class=\"container\">\n                    <div class=\"col-md-12\">\n                        <h2>Hot this week</h2>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"container\">\n                <div class=\"product-slider\" id=\"hot-slider\">\n                </div>\n                <!-- /.product-slider -->\n            </div>\n            <!-- /.container -->\n\n        </div>\n        <!-- /#hot -->\n\n        <!-- *** HOT END *** -->\n\n    </div>\n    <!-- /#content -->\n\n    <div id=\"footer\"></div>\n\n</div>\n<!-- /#all -->\n\n\n<!-- *** SCRIPTS TO INCLUDE ***\n_________________________________________________________ -->\n<script src=\"js/jquery-1.11.0.min.js\"></script>\n<script src=\"js/bootstrap.min.js\"></script>\n<script src=\"js/js.cookie.js\"></script>\n<script src=\"js/client.js\"></script>\n<script src=\"js/jquery.cookie.js\"></script>\n<script src=\"js/waypoints.min.js\"></script>\n<script src=\"js/modernizr.js\"></script>\n<script src=\"js/bootstrap-hover-dropdown.js\"></script>\n<script src=\"js/owl.carousel.min.js\"></script>\n<script src=\"js/front.js\"></script>\n<script src=\"js/jquery.query-object.js\"></script>\n<script src=\"js/client.js\"></script>\n<script>\n\n    $(document).ready(function () {\n        $.ajaxSetup({\n            contentType: \"application/json; charset=utf-8\"\n        });\n\n        console.log(\"Loading components for index.html\");\n        $(\"#topbar\").load(\"topbar.html\");\n        $(\"#navbar\").load(\"navbar.html\");\n        $(\"#footer\").load(\"footer.html\");\n\n        $.getJSON('/catalogue', {size: 5}, function (data) {\n            if (data != null) {\n                $.each(data, function (index, element) {\n                    $('#hot-slider').append(\n                            '<div class=\"item\">\\\n                            <div class=\"product\">\\\n                                <div class=\"flip-container\">\\\n                                    <div class=\"flipper\">\\\n                                        <div class=\"front\">\\\n                                            <a href=\"detail.html?id=' + element.id + '\">\\\n                                            <img src=\"' + element.imageUrl[0] + '\" alt=\"\" class=\"img-responsive\">\\\n                                        </a>\\\n                                    </div>\\\n                                    <div class=\"back\">\\\n                                        <a href=\"detail.html?id=' + element.id + '\">\\\n                                            <img src=\"' + element.imageUrl[1] + '\" alt=\"\" class=\"img-responsive\">\\\n                                        </a>\\\n                                    </div>\\\n                                </div>\\\n                            </div>\\\n                            <a href=\"detail.html?id=' + element.id + '\" class=\"invisible\">\\\n                                <img src=\"' + element.imageUrl[0] + '\" alt=\"\" class=\"img-responsive\">\\\n                            </a>\\\n                            <div class=\"text\">\\\n                                <h3><a href=\"detail.html?id=' + element.id + '\">' + element.name + '</a></h3>\\\n                                <p class=\"price\">$' + element.price + '</p>\\\n                            </div>\\\n                        </div>\\\n                    </div>'\n                    );\n                });\n                $('.product-slider').owlCarousel({\n                    navigation: true, // Show next and prev buttons\n                    slideSpeed: 300,\n                    paginationSpeed: 400,\n                    afterInit: function () {\n                        $('.product-slider .item').css('visibility', 'visible');\n                    }\n                });\n\n                $('#main-slider').owlCarousel({\n                    navigation: true, // Show next and prev buttons\n                    slideSpeed: 300,\n                    paginationSpeed: 400,\n                    autoPlay: true,\n                    stopOnHover: true,\n                    singleItem: true,\n                    afterInit: ''\n                });\n\n            }\n        });\n    })\n</script>\n</body>\n\n</html>\n"
+       }
+      },
+      "description": "OK"
+     }
+    },
+    "summary": "Seen 2 requests"
    },
    "parameters": []
   },
   "/login": {
    "get": {
-    "operationId": "8a8eb9a1-8bdb-444f-8dbd-c7216e49cd3b",
+    "operationId": "4e16095e-47fe-4fbf-b1ab-fc58dfa6fd82",
     "parameters": [
      {
       "in": "header",
@@ -567,220 +545,108 @@
       "description": "OK"
      }
     },
-    "summary": "Seen 40 requests"
+    "summary": "Seen 1 requests"
    },
    "parameters": []
   },
   "/orders": {
-   "parameters": [],
-   "post": {
-    "operationId": "36d50b5d-9852-4900-bcc3-40dd629b846c",
-    "parameters": [],
+   "get": {
+    "operationId": "befcddf9-b644-496c-93ea-c8b831e12ab3",
+    "parameters": [
+     {
+      "in": "header",
+      "name": "x-requested-with",
+      "required": false,
+      "schema": {
+       "enum": [
+        "XMLHttpRequest"
+       ],
+       "type": "string"
+      }
+     }
+    ],
     "responses": {
      "201": {
       "content": {
        "application/json": {
-        "example": {
-         "address": {
-          "city": "Glasgow",
-          "country": "United Kingdom",
-          "id": null,
-          "number": "246",
-          "postcode": "G67 3DL",
-          "street": "Whitelees Road"
-         },
-         "card": {
-          "ccv": "958",
-          "expires": "08/19",
-          "id": null,
-          "longNum": "5544154011345918"
-         },
-         "customer": {
-          "addresses": [],
-          "cards": [],
-          "firstName": "User",
-          "id": null,
-          "lastName": "Name",
-          "username": "user"
-         },
-         "customerId": "57a98d98e4b00679b4a830b2",
-         "date": "2021-03-01T21:38:28.792+0000",
-         "id": "603d5ed4eae7630008911b76",
-         "items": [
-          {
-           "id": "603d5ed367e0e20007a7e678",
-           "itemId": "808a2de1-1aaa-4c25-a9b9-6612e8f29a38",
-           "quantity": 1,
-           "unitPrice": 17.32
-          }
-         ],
-         "shipment": {
-          "id": "53146eff-8a7a-4435-9ca4-c83f6a374cee",
-          "name": "57a98d98e4b00679b4a830b2"
-         },
-         "total": 22.31
-        },
+        "example": [],
         "schema": {
-         "properties": {
-          "address": {
-           "properties": {
-            "city": {
-             "type": "string"
-            },
-            "country": {
-             "type": "string"
-            },
-            "id": {},
-            "number": {
-             "type": "string"
-            },
-            "postcode": {
-             "type": "string"
-            },
-            "street": {
-             "type": "string"
-            }
-           },
-           "required": [
-            "city",
-            "country",
-            "id",
-            "number",
-            "postcode",
-            "street"
-           ],
-           "type": "object"
-          },
-          "card": {
-           "properties": {
-            "ccv": {
-             "type": "string"
-            },
-            "expires": {
-             "type": "string"
-            },
-            "id": {},
-            "longNum": {
-             "type": "string"
-            }
-           },
-           "required": [
-            "ccv",
-            "expires",
-            "id",
-            "longNum"
-           ],
-           "type": "object"
-          },
-          "customer": {
-           "properties": {
-            "addresses": {
-             "items": {},
-             "type": "array"
-            },
-            "cards": {
-             "items": {},
-             "type": "array"
-            },
-            "firstName": {
-             "type": "string"
-            },
-            "id": {},
-            "lastName": {
-             "type": "string"
-            },
-            "username": {
-             "type": "string"
-            }
-           },
-           "required": [
-            "addresses",
-            "cards",
-            "firstName",
-            "id",
-            "lastName",
-            "username"
-           ],
-           "type": "object"
-          },
-          "customerId": {
-           "type": "string"
-          },
-          "date": {
-           "type": "string"
-          },
-          "id": {
-           "type": "string"
-          },
-          "items": {
-           "items": {
-            "properties": {
-             "id": {
-              "type": "string"
-             },
-             "itemId": {
-              "type": "string"
-             },
-             "quantity": {
-              "type": "integer"
-             },
-             "unitPrice": {
-              "type": "number"
-             }
-            },
-            "required": [
-             "id",
-             "itemId",
-             "quantity",
-             "unitPrice"
-            ],
-            "type": "object"
-           },
-           "type": "array"
-          },
-          "shipment": {
-           "properties": {
-            "id": {
-             "type": "string"
-            },
-            "name": {
-             "type": "string"
-            }
-           },
-           "required": [
-            "id",
-            "name"
-           ],
-           "type": "object"
-          },
-          "total": {
-           "type": "number"
-          }
-         },
-         "required": [
-          "address",
-          "card",
-          "customer",
-          "customerId",
-          "date",
-          "id",
-          "items",
-          "shipment",
-          "total"
-         ],
-         "type": "object"
+         "items": {},
+         "type": "array"
         }
        }
       },
       "description": "Created"
      }
     },
-    "summary": "Seen 31 requests"
-   }
+    "summary": "Seen 2 requests"
+   },
+   "parameters": []
+  },
+  "/tags": {
+   "get": {
+    "operationId": "b3500593-a587-4a7c-8185-06e9266863b9",
+    "parameters": [
+     {
+      "in": "header",
+      "name": "x-requested-with",
+      "required": false,
+      "schema": {
+       "enum": [
+        "XMLHttpRequest"
+       ],
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "example": {
+         "err": null,
+         "tags": [
+          "brown",
+          "geek",
+          "formal",
+          "blue",
+          "skin",
+          "red",
+          "action",
+          "sport",
+          "black",
+          "magic",
+          "green"
+         ]
+        },
+        "schema": {
+         "properties": {
+          "err": {},
+          "tags": {
+           "items": {
+            "type": "string"
+           },
+           "type": "array"
+          }
+         },
+         "required": [
+          "err",
+          "tags"
+         ],
+         "type": "object"
+        }
+       }
+      },
+      "description": "OK"
+     }
+    },
+    "summary": "Seen 10 requests"
+   },
+   "parameters": []
   },
   "/topbar.html": {
    "get": {
-    "operationId": "632fbf39-2a12-4244-b934-7e38277949dc",
+    "operationId": "47a43d02-60ea-484e-8f1d-54f79a58499c",
     "parameters": [
      {
       "in": "header",
@@ -798,19 +664,19 @@
      "200": {
       "content": {
        "text/html": {
-        "example": "<!-- *** TOPBAR ***\n_________________________________________________________ -->\n<div id=\"top\">\n    <div class=\"container\">\n        <div class=\"co"
+        "example": "<!-- *** TOPBAR ***\n_________________________________________________________ -->\n<div id=\"top\">\n    <div class=\"container\">\n        <div class=\"col-md-6 offer\" data-animate=\"fadeInDown\">\n            <a href=\"#\" class=\"btn btn-success btn-sm\"\n               data-animate-hover=\"shake\">Offer of the day</a> <a href=\"#\">Buy\n            1000 socks, get a shoe for free!</a>\n        </div>\n        <div class=\"col-md-6\" data-animate=\"fadeInDown\">\n            <ul class=\"menu\">\n                <li id=\"login\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\">Login</a></li>\n                <li id=\"howdy\"></li>\n                <li id=\"logout\"><a href=\"index.html\" onclick=\"logout()\">Logout</a></li>\n                <li id=\"register\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#register-modal\">Register</a></li>\n                <!--<li><a href=\"contact.html\">Contact</a></li>-->\n                <!--<li><a href=\"#\">Recently viewed</a></li>-->\n            </ul>\n        </div>\n    </div>\n    <div class=\"modal fade\" id=\"login-modal\" tabindex=\"-1\" role=\"dialog\"\n         aria-labelledby=\"Login\" aria-hidden=\"true\">\n        <div class=\"modal-dialog modal-sm\">\n\n            <div class=\"modal-content\">\n                <div class=\"modal-header\">\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\"\n                            aria-hidden=\"true\">&times;</button>\n                    <h4 class=\"modal-title\" id=\"Login\">Customer login</h4>\n                </div>\n                <div class=\"modal-body\">\n\n                    <div id=\"login-message\"> </div>\n\n                    <form action=\"index.html\" method=\"get\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control\"\n                                   name=\"username\"\n                                   id=\"username-modal\" placeholder=\"username\">\n                        </div>\n                        <div class=\"form-group\">\n                            <input type=\"password\" class=\"form-control\"\n                                   name=\"password\"\n                                   id=\"password-modal\" placeholder=\"password\">\n                        </div>\n\n                        <p class=\"text-center\">\n                            <button class=\"btn btn-primary\" href=\"#\" onclick=\"return login()\"><i\n                                    class=\"fa fa-sign-in\"></i> Log in\n                            </button>\n                        </p>\n\n                    </form>\n\n                    <!--<p class=\"text-center text-muted\">Not registered yet?</p>-->\n                    <!--<p class=\"text-center text-muted\"><a href=\"register.html\"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>-->\n\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"modal fade\" id=\"register-modal\" tabindex=\"-1\" role=\"dialog\"\n         aria-labelledby=\"Register\" aria-hidden=\"true\">\n        <div class=\"modal-dialog modal-sm\">\n\n            <div class=\"modal-content\">\n                <div class=\"modal-header\">\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\"\n                            aria-hidden=\"true\">&times;</button>\n                    <h4 class=\"modal-title\" id=\"Login\">Register</h4>\n                </div>\n                <div class=\"modal-body\">\n\n                    <div id=\"registration-message\"> </div>\n\n                    <form action=\"index.html\" method=\"get\">\n\n                        <div class=\"form-group\">\n                            <label for=\"name\">Username</label>\n                            <input type=\"text\" class=\"form-control\" name=\"username\"\n\t\t\t    \tid=\"register-username-modal\" placeholder=\"username\"required>\n                        </div>\n                        <div class=\"form-group\">\n                            <label for=\"first-name\">First name</label>\n                            <input type=\"text\" class=\"form-control\" name=\"first-name\"\n\t\t\t    \tid=\"register-first-modal\" placeholder=\"first name\" required>\n                        </div>\n                        <div class=\"form-group\">\n                            <label for=\"last-name\">Last name</label>\n                            <input type=\"text\" class=\"form-control\" name=\"last-name\"\n\t\t\t    \tid=\"register-last-modal\" placeholder=\"last name\"required>\n                        </div>\n                        <div class=\"form-group\">\n                            <label for=\"email\">Email</label>\n                            <input type=\"text\" class=\"form-control\" name=\"email\"\n\t\t\t    \tid=\"register-email-modal\" placeholder=\"email\" required>\n                        </div>\n                        <div class=\"form-group\">\n                            <label for=\"password\">Password</label>\n                            <input type=\"password\" class=\"form-control\" name=\"password\"\n\t\t\t    \tid=\"register-password-modal\"required>\n                        </div>\n                        <p class=\"text-center\">\n                            <button class=\"btn btn-primary\" href=\"#\" onclick=\"return register()\"><i\n                                    class=\"fa fa-sign-in\"></i> Register\n                            </button>\n                        </p>\n\n                    </form>\n\n                    <!--<p class=\"text-center text-muted\">Not registered yet?</p>-->\n                    <!--<p class=\"text-center text-muted\"><a href=\"register.html\"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>-->\n\n                </div>\n            </div>\n        </div>\n    </div>\n\n</div>\n\n<!-- *** TOP BAR END *** -->\n\n<script>\n\n    $(document).ready(function () {\n        $.ajaxSetup({\n            contentType: \"application/json; charset=utf-8\"\n        });\n\n        if ($.cookie('logged_in') != null && $.cookie('logged_in') != \"\") {\n\n            username($.cookie('logged_in'), function (username) {\n                if (typeof username !== 'undefined') {\n                    $(\"#login\").remove();\n                    $(\"#register\").remove();\n                    $(\"#howdy\").append('<a href=\"#\">Logged in as ' + username + '<\\/a>').hide().fadeIn(200);\n                    $(\"#logout\").hide().fadeIn(200);\n                } else {\n                    $(\"#howdy\").remove()\n                    $(\"#logout\").remove()\n                }\n            });\n        } else {\n            $(\"#howdy\").remove()\n            $(\"#logout\").remove()\n        }\n\n    })\n</script>\n"
        }
       },
       "description": "OK"
      }
     },
-    "summary": "Seen 1 requests"
+    "summary": "Seen 2 requests"
    },
    "parameters": []
   },
   "/{param}": {
    "get": {
-    "operationId": "4ab20ea9-7e10-4445-8b4b-cc48b1c3dbc9",
+    "operationId": "99f63de0-182b-433c-8dec-ef867e0a3c70",
     "parameters": [
      {
       "in": "header",
@@ -834,7 +700,7 @@
       "description": "OK"
      }
     },
-    "summary": "Seen 1 requests"
+    "summary": "Seen 2 requests"
    },
    "parameters": [
     {
@@ -854,7 +720,7 @@
  },
  "tags": [
   {
-   "name": "cart"
+   "name": "catalogue"
   }
  ]
 }

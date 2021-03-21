@@ -17,48 +17,38 @@ services:
   managementRoot: __admin
   oas: '@mock-data/up9-http___carts-spec.json'
   endpoints:
-  - path: /carts/{{customerId}}
+  - path: /carts/{{id}}/merge
     response:
       status: 202
-    method: delete
-  - path: /carts/{{customerId}}/items
-    response:
-      status: 201
-      headers:
-        Content-Type: application/json
-      body: |-
-        {
-         "id": "603d5ed367e0e20007a7e678",
-         "itemId": "{{request.body}}",
-         "quantity": 1,
-         "unitPrice": {{random.float 7.99 99.99 2}}
-        }
-    method: post
-  - path: /carts/{{customerId}}/merge
-    response:
-      status: 202
-  - path: /carts/{{customerId}}/items
+  - path: /carts/{{id}}/items
     response:
       headers:
         Content-Type: application/json
       body: '[]'
+      useTemplating: false
 - name: http://catalogue
-  hostname: catalogue
   port: 8002
   ssl: false
   managementRoot: __admin
   oas: '@mock-data/up9-http___catalogue-spec.json'
   endpoints:
+  - path: /catalogue/size
+    response:
+      headers:
+        Content-Type: application/json
+      body: '{"size":9,"err":null}'
+      useTemplating: false
   - path: /catalogue
     response:
       headers:
         Content-Type: application/json
       body: '@mock-data/resp_10.json'
-  - path: /catalogue/{{id}}
+  - path: /tags
     response:
       headers:
         Content-Type: application/json
-      body: '@mock-data/resp_11.json'
+      body: '{"tags":["brown","geek","formal","blue","skin","red","action","sport","black","magic","green"],"err":null}'
+      useTemplating: false
 - name: http://front-end
   port: 8003
   ssl: false
@@ -71,55 +61,47 @@ services:
         Content-Type: text/html
       body: '@mock-data/resp_1.html'
       useTemplating: false
-  - path: /basket.html
+  - path: /cart
     response:
       headers:
-        Content-Type: text/html
-      body: '@mock-data/resp_2.html'
+        Content-Type: application/json
+      body: '[]'
       useTemplating: false
-  - path: /cart
+  - path: /catalogue/size
     response:
-      status: 202
-    method: delete
-  - path: /cart
-    response:
-      status: 201
-    method: post
+      headers:
+        Content-Type: application/json
+      body: '{"size":9,"err":null}'
+      useTemplating: false
   - path: /catalogue
     response:
       headers:
         Content-Type: application/json
+      body: '@mock-data/resp_4.json'
+  - path: /customers/{{customerId}}
+    response:
+      headers:
+        Content-Type: application/json
       body: '@mock-data/resp_5.json'
-  - path: /category.html
+      useTemplating: false
+  - path: /index.html
     response:
       headers:
         Content-Type: text/html
       body: '@mock-data/resp_6.html'
-      useTemplating: false
-  - path: /detail.html
-    response:
-      headers:
-        Content-Type: text/html
-      body: '@mock-data/resp_7.html'
-      useTemplating: false
-  - path: /login
-    response:
-      headers:
-        Content-Type: text/html
-      body: Cookie is set
       useTemplating: false
   - path: /orders
     response:
       status: 201
       headers:
         Content-Type: application/json
-      body: '@mock-data/resp_9.json'
-    method: post
-  - path: /customers/{{customerId}}
+      body: '[]'
+      useTemplating: false
+  - path: /tags
     response:
       headers:
         Content-Type: application/json
-      body: '@mock-data/resp_22.json'
+      body: '{"tags":["brown","geek","formal","blue","skin","red","action","sport","black","magic","green"],"err":null}'
       useTemplating: false
   - path: /footer.html
     response:
@@ -127,80 +109,105 @@ services:
         Content-Type: text/html
       body: '@mock-data/resp_23.html'
       useTemplating: false
+  - path: /login
+    response:
+      headers:
+        Content-Type: text/html
+      body: Cookie is set
+      useTemplating: false
   - path: /{{param}}
     response:
       headers:
         Content-Type: text/html
-      body: '@mock-data/resp_25.html'
+      body: '@mock-data/resp_26.html'
       useTemplating: false
   - path: /topbar.html
     response:
       headers:
         Content-Type: text/html
-      body: |-
-        <!-- *** TOPBAR ***
-        _________________________________________________________ -->
-        <div id="top">
-            <div class="container">
-                <div class="co
+      body: '@mock-data/resp_27.html'
       useTemplating: false
-- name: http://orders
+  - path: /customers/{{customerId}}
+    response:
+      body: no healthy upstream
+      useTemplating: false
+  - path: /category.html
+    response:
+      headers:
+        Content-Type: text/html
+      body: '@mock-data/resp_34.html'
+      useTemplating: false
+  - path: /catalogue/size
+    response: {}
+  - path: /catalogue
+    response: {}
+  - path: /tags
+    response: {}
+- name: http://mockintosh
   port: 8004
   ssl: false
   managementRoot: __admin
-  oas: '@mock-data/up9-http___orders-spec.json'
+  oas: '@mock-data/up9-http___mockintosh-spec.json'
   endpoints:
-  - path: /orders
+  - path: /customers/{{id}}
     response:
-      status: 201
       headers:
         Content-Type: application/json
       body: '@mock-data/resp_17.json'
-    method: post
-- name: http://payment
-  port: 8005
-  ssl: false
-  managementRoot: __admin
-  oas: '@mock-data/up9-http___payment-spec.json'
-  endpoints:
-  - path: /paymentAuth
+  - path: /customers/undefined
     response:
       headers:
         Content-Type: application/json
-      body: '{"authorised":true,"message":"Payment authorised"}'
+      body: '@mock-data/resp_18.json'
       useTemplating: false
-    method: post
-- name: http://shipping
-  port: 8006
-  ssl: false
-  managementRoot: __admin
-  oas: '@mock-data/up9-http___shipping-spec.json'
-  endpoints:
-  - path: /shipping
-    response:
-      status: 201
-      headers:
-        Content-Type: application/json
-      body: |-
-        {
-         "id": "{{request.body}}",
-         "name": "{{request.body}}"
-        }
-    method: post
-- name: http://user
-  port: 8007
-  ssl: false
-  managementRoot: __admin
-  oas: '@mock-data/up9-http___user-spec.json'
-  endpoints:
-  - path: /customers/{{customerId}}
-    response:
-      headers:
-        Content-Type: application/json
-      body: '@mock-data/resp_12.json'
   - path: /login
     response:
       headers:
         Content-Type: application/json
-      body: '@mock-data/resp_13.json'
+      body: '@mock-data/resp_19.json'
+      useTemplating: false
+  - path: /
+    response:
+      headers:
+        Content-Type: text/html
+      body: '@mock-data/resp_39.html'
+      useTemplating: false
+- name: http://orders
+  port: 8005
+  ssl: false
+  managementRoot: __admin
+  oas: '@mock-data/up9-http___orders-spec.json'
+  endpoints:
+  - path: /orders/search/customerId
+    response:
+      headers:
+        Content-Type: application/json
+      body: |-
+        {
+          "_embedded" : {
+            "customerOrders" : [ ]
+          },
+          "_links" : {
+            "self" : {
+              "href" : "http://127.0.0.1:15200/orders/search/customerId?sort=date&custId=undefined"
+            }
+          }
+        }
+      useTemplating: false
+- name: http://user
+  port: 8006
+  ssl: false
+  managementRoot: __admin
+  oas: '@mock-data/up9-http___user-spec.json'
+  endpoints:
+  - path: /customers/{{id}}
+    response:
+      headers:
+        Content-Type: application/json
+      body: '@mock-data/resp_15.json'
+  - path: /login
+    response:
+      headers:
+        Content-Type: application/json
+      body: '@mock-data/resp_16.json'
       useTemplating: false
